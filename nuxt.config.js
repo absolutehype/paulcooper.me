@@ -9,44 +9,38 @@ export default {
      ** Headers of the page
      */
     head: {
-        title: process.env.npm_package_name || '',
+        title: 'Paul Cooper - Front End Developer',
         meta: [
             { charset: 'utf-8' },
             {
                 name: 'viewport',
-                content: 'width=device-width, initial-scale=1'
-            },
-            {
-                hid: 'description',
-                name: 'description',
-                content: process.env.npm_package_description || ''
+                content: 'width=device-width, initial-scale=1',
             },
             {
                 name: 'theme-color',
-                content: '#ffffff'
+                content: '#ffffff',
             },
             {
                 name: 'apple-touch-icon',
-                content: '~/static/apple-touch-icon.png'
+                content: '~/static/apple-touch-icon.png',
             },
             {
                 hid: 'description',
                 name: 'description',
-                content:
-                    'Find your next Boat on Boatfront. The #1 marketplace for buying new and used Sail or Motor Boats.'
+                content: 'The personal portfolio of Paul Cooper, a London based Front End Developer working at HP',
             },
             {
                 name: 'og:image',
-                content: '~/static/share.jpg'
+                content: '~/static/share.jpg',
             },
             {
                 name: 'og:type',
-                content: 'website'
-            }
+                content: 'website',
+            },
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.svg' }
-        ]
+            { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.svg' },
+        ],
     },
     /*
      ** Customize the progress-bar color
@@ -55,7 +49,7 @@ export default {
     /*
      ** Global CSS
      */
-     css: ['assets/styles/index.scss'],
+    css: ['assets/styles/index.scss'],
     /*
      ** Plugins to load before mounting the App
      */
@@ -69,7 +63,7 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/pwa',
-        '@nuxtjs/svg-sprite'
+        '@nuxtjs/svg-sprite',
         // Doc: https://github.com/nuxt/content
         // '@nuxt/content'
     ],
@@ -78,7 +72,7 @@ export default {
      ** See https://github.com/nuxt-community/svg-sprite-module
      */
     svgSprite: {
-        input: '~/assets/svg/'
+        input: '~/assets/svg/',
     },
     /*
      ** Vue i18n configuration
@@ -89,19 +83,19 @@ export default {
                 code: 'en',
                 name: 'English',
                 iso: 'en-US',
-                file: 'en-US.js'
+                file: 'en-US.js',
             },
             {
                 code: 'es',
                 name: 'Español',
                 iso: 'es-ES',
-                file: 'es-ES.js'
-            }
+                file: 'es-ES.js',
+            },
         ],
         lazy: true,
         seo: true,
         defaultLocale: 'en',
-        langDir: 'lang/'
+        langDir: 'lang/',
     },
     /*
      ** Build configuration
@@ -110,6 +104,6 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) {}
-    }
+        extend(config, ctx) {},
+    },
 }

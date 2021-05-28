@@ -1,7 +1,7 @@
 <template>
-    <div class="wrapper">
+    <div class="Wrapper">
         <nuxt />
-        <Footer />
+        <!-- <Footer /> -->
     </div>
 </template>
 
@@ -16,11 +16,9 @@ export default {
 </script>
 
 <style lang="scss">
-.wrapper {
+.Wrapper {
     display: flex;
     flex: 1;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 </style>
