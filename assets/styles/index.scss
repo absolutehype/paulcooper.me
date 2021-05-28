@@ -1,0 +1,134 @@
+@import '_reset';
+@import '_variables';
+@import '_typography';
+
+body {
+    background: $brandPrimary;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+}
+
+#__nuxt,
+#__layout {
+    display: flex;
+    flex: 1;
+}
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    background: $background;
+    flex: 1;
+    align-items: center;
+
+    &--no-overflow {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+.Content {
+    width: 100%;
+    display: grid;
+    flex: 1;
+    grid-template-rows: auto;
+    grid-template-columns:
+        1fr
+        calc(min(1030px, 100%))
+        1fr;
+
+    @media all and (min-width: $breakpointLarge) {
+        grid-template-columns:
+            1fr
+            calc(min(1060px, 100%))
+            1fr;
+    }
+
+    > * {
+        grid-column: 2;
+    }
+
+    .full-bleed {
+        width: 100%;
+        grid-column: 1 / 4;
+    }
+
+    &__inner {
+        padding: 15px;
+
+        @media all and (min-width: $breakpointLarge) {
+            padding: 30px;
+        }
+    }
+}
+
+.StatList {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    @media all and (min-width: $breakpointMedium) {
+        padding: 30px 0;
+        flex-direction: row;
+    }
+
+    &__item {
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media all and (min-width: $breakpointMedium) {
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0 25px;
+        }
+
+        @media all and (min-width: $breakpointLarge) {
+            padding: 0 50px;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
+    }
+
+    &__key {
+        margin-bottom: 5px;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 13px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    &__value {
+        margin: 0;
+        padding: 0;
+        font-family: quador, serif;
+        font-size: 20px;
+
+        @media all and (min-width: $breakpointMedium) {
+            font-size: 25px;
+        }
+    }
+}
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
