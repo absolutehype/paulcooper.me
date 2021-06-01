@@ -2,6 +2,9 @@
 @import '_variables';
 @import '_typography';
 
+@import 'components/index';
+@import 'layouts/index';
+
 body {
     background: $background;
     display: flex;

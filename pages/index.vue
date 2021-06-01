@@ -5,15 +5,19 @@
                 <img src="~static/avatar.jpeg" class="Masthead__avatar" alt="Paul Cooper Profile Picture" />
                 <section class="Masthead__content">
                     <h1>Paul Cooper</h1>
-                    <p>
-                        <a href="https://en.wikipedia.org/wiki/London" title="London, UK">London</a> based Front End Developer, hobbyist photographer and self-confessed
-                        tech nerd working at <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
-                    </p>
+                    <i18n path="HOME_SUMMARY" tag="p">
+                        <template v-slot:location>
+                            <a href="https://en.wikipedia.org/wiki/London" :title="$t('LOCATION')">{{ $t('LOCATION_SHORT') }}</a>
+                        </template>
+                        <template v-slot:company>
+                            <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
+                        </template>
+                    </i18n>
                 </section>
             </div>
         </header>
         <div class="Content">
-            <p>In a nutshell, i’m an ambitious and passionate front end developer. I strive to produce beautiful products that inspire and delight. I’ve a little over a decade of industry experience in both design and development. I’ve worked with great people, at some innovative companies for some industry leading brands.</p>
+            <p>{{ $t('HOME_BODY') }}</p>
             <ul class="BrandList">
                 <li class="BrandList__item">
                     <img src="~/assets/svg/google.svg" alt="Google" />

@@ -1,7 +1,7 @@
 <template>
     <div class="Wrapper">
         <nuxt />
-        <!-- <Footer /> -->
+        <Footer />
     </div>
 </template>
 
