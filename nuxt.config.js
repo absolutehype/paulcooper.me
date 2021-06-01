@@ -18,20 +18,21 @@ export default {
             },
             {
                 name: 'theme-color',
-                content: '#333333',
+                content: '#ffffff',
             },
             {
                 hid: 'description',
                 name: 'description',
-                content:
-                    'The personal portfolio of Paul Cooper, a London based Front End Developer working at HP',
+                content: 'The personal portfolio of Paul Cooper, a London based Front End Developer working at HP',
             },
             {
                 name: 'og:type',
                 content: 'website',
-            }
+            },
         ],
-        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }]
+        link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+        ],
     },
     /*
      ** Customize the progress-bar color
