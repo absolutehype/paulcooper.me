@@ -1,45 +1,43 @@
 <template>
     <div class="Home">
-        <header class="Banner">
-        <div class="Banner__inner">
-            <aside class="Banner__banner">
-                <img src="~static/avatar.jpeg" class="Banner__avatar" />
-            </aside>
-            <section class="Banner__content">
-                <h1>Paul Cooper</h1>
-                <p>
-                    <a href="https://en.wikipedia.org/wiki/London" title="London, UK">London</a> based Front End Developer, hobbyist photographer and self-confessed
-                    tech nerd working at <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
-                </p>
-            </section>
-        </div>
+        <header class="Masthead">
+            <div class="Masthead__inner">
+                <img src="~static/avatar.jpeg" class="Masthead__avatar" alt="Paul Cooper Profile Picture" />
+                <section class="Masthead__content">
+                    <h1>Paul Cooper</h1>
+                    <p>
+                        <a href="https://en.wikipedia.org/wiki/London" title="London, UK">London</a> based Front End Developer, hobbyist photographer and self-confessed
+                        tech nerd working at <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
+                    </p>
+                </section>
+            </div>
         </header>
         <div class="Content">
             <p>In a nutshell, i’m an ambitious and passionate front end developer. I strive to produce beautiful products that inspire and delight. I’ve a little over a decade of industry experience in both design and development. I’ve worked with great people, at some innovative companies for some industry leading brands.</p>
             <ul class="BrandList">
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/google.svg" />
+                    <img src="~/assets/svg/google.svg" alt="Google" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/barclays.svg" />
+                    <img src="~/assets/svg/barclays.svg" alt="Tesco" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/tesco.svg" />
+                    <img src="~/assets/svg/tesco.svg" alt="Tesco" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/cruk.svg" />
+                    <img src="~/assets/svg/cruk.svg" alt="Cancer Research UK" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/att.svg" />
+                    <img src="~/assets/svg/att.svg" alt="AT&T" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/pret.svg" />
+                    <img src="~/assets/svg/pret.svg" alt="Pret a Manger" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/youtube.svg" />
+                    <img src="~/assets/svg/youtube.svg" alt="YouTube" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/redbull.svg" />
+                    <img src="~/assets/svg/redbull.svg" alt="Red Bull" />
                 </li>
             </ul>
         </div>
@@ -64,7 +62,7 @@ export default {
     align-items: center;
 }
 
-.Banner {
+.Masthead {
     color: #fff;
     position: relative;
     width: 100vw;
@@ -89,17 +87,21 @@ export default {
     }
 
     &__inner {
-        padding: 40px;
+        padding: 40px 40px 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
 
-        @media all and (min-width: 600px) {
+        @media all and (min-width: 400px) {
+            padding: 80px 60px 90px;
+        }
+
+        @media all and (min-width: 650px) {
             flex-direction: row;
             align-items: center;
             text-align: left;
-            padding: 80px 40px;
+            padding: 80px 60px 90px;
         }
 
         @media all and (min-width: 1000px) {
@@ -117,8 +119,9 @@ export default {
         }
     }
 
-    &__banner {
+    &__avatar {
         max-width: 20vw;
+        border-radius: 50%;
 
         @media all and (min-width: 600px) {
             max-width: 16vw;
@@ -128,11 +131,6 @@ export default {
         @media all and (min-width: 1000px) {
             max-width: 12vw;
             margin-right: 3vw;
-        }
-
-        img {
-            max-width: 100%;
-            border-radius: 50%;
         }
     }
 }
