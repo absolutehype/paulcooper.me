@@ -18,29 +18,20 @@ export default {
             },
             {
                 name: 'theme-color',
-                content: '#ffffff',
-            },
-            {
-                name: 'apple-touch-icon',
-                content: '~/static/apple-touch-icon.png',
+                content: '#333333',
             },
             {
                 hid: 'description',
                 name: 'description',
-                content: 'The personal portfolio of Paul Cooper, a London based Front End Developer working at HP',
-            },
-            {
-                name: 'og:image',
-                content: '~/static/share.jpg',
+                content:
+                    'The personal portfolio of Paul Cooper, a London based Front End Developer working at HP',
             },
             {
                 name: 'og:type',
                 content: 'website',
-            },
+            }
         ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.svg' },
-        ],
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }]
     },
     /*
      ** Customize the progress-bar color
