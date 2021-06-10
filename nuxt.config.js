@@ -29,6 +29,14 @@ export default {
                 name: 'og:type',
                 content: 'website',
             },
+            {
+                name: 'supported-color-schemes',
+                content: 'dark light',
+            },
+            {
+                name: 'color-scheme',
+                content: 'dark light',
+            }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
