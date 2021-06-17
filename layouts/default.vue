@@ -11,6 +11,9 @@ import Footer from '../components/Footer';
 export default {
     components: {
         Footer
+    },
+    head () {
+        return this.$nuxtI18nHead()
     }
 };
 </script>
