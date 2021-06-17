@@ -167,7 +167,7 @@ body {
             transition: filter 0.2s ease-in-out;
 
             @media all and (prefers-color-scheme: 'dark') {
-                filter: brightness(100);
+                filter: brightness(100) saturate(0);
             }
         }
     }
