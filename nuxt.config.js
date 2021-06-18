@@ -102,6 +102,11 @@ export default {
         seo: true,
         defaultLocale: 'en',
         langDir: 'lang/',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'i18n_redirected',
+            onlyOnRoot: true,
+        }
     },
     /*
      ** Build configuration
