@@ -66,6 +66,7 @@ export default {
         '@nuxtjs/svg-sprite',
         // Doc: https://github.com/nuxt/content
         // '@nuxt/content'
+        '@nuxtjs/google-analytics'
     ],
     /*
      ** SVG Sprite module configuration
@@ -73,6 +74,12 @@ export default {
      */
     svgSprite: {
         input: '~/assets/svg/',
+    },
+    /*
+     ** Analytics
+     */
+    googleAnalytics: {
+        id: 'UA-10561535-1'
     },
     /*
      ** Vue i18n configuration
@@ -115,6 +122,6 @@ export default {
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) {},
+        extend(config, ctx) { },
     },
 }
