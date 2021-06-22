@@ -1,5 +1,4 @@
 export default {
-    mode: 'universal',
     /*
      ** Nuxt target
      ** See https://nuxtjs.org/api/configuration-target
@@ -118,10 +117,10 @@ export default {
     /*
      ** Build configuration
      */
-    build: {
-        /*
-         ** You can extend webpack config here
-         */
-        extend(config, ctx) { },
-    },
+    // build: {
+    //     /*
+    //      ** You can extend webpack config here
+    //      */
+    //     extend(config, ctx) { },
+    // },
 }
