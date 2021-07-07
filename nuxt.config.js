@@ -61,6 +61,7 @@ export default {
         'nuxt-i18n',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
+        '@nuxtjs/sentry',
         '@nuxtjs/pwa',
         '@nuxtjs/svg-sprite',
         // Doc: https://github.com/nuxt/content
@@ -79,6 +80,13 @@ export default {
      */
     googleAnalytics: {
         id: 'UA-10561535-1'
+    },
+    /*
+     ** Sentry
+     */
+    sentry: {
+        dsn: "https://e74fbb8d8ed049ddb1488b6475063661@o914548.ingest.sentry.io/5853589",
+        environment: process.env.VERCEL_ENV
     },
     /*
      ** Vue i18n configuration

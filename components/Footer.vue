@@ -8,6 +8,7 @@
             >
                 <nuxt-link
                     :to="switchLocalePath(locale.code)"
+                    :hreflang="locale.code"
                     class="Footer__link"
                     >{{ locale.name }}</nuxt-link
                 >
