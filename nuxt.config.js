@@ -85,7 +85,7 @@ export default {
      ** Sentry
      */
     sentry: {
-        dsn: "https://e74fbb8d8ed049ddb1488b6475063661@o914548.ingest.sentry.io/5853589",
+        dsn: process.env.SENTRY_DSN,
         environment: process.env.VERCEL_ENV
     },
     /*
