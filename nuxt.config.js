@@ -68,6 +68,16 @@ export default {
         // '@nuxt/content'
         '@nuxtjs/google-analytics'
     ],
+    /**
+     * Build Modules
+     */
+    buildModules: ['nuxt-gsap-module'],
+    /**
+     * GreenSock Animation
+     */
+    gsap: {
+        /* module options */
+    },
     /*
      ** SVG Sprite module configuration
      ** See https://github.com/nuxt-community/svg-sprite-module

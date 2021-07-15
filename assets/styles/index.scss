@@ -163,11 +163,18 @@ body {
 
         img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 35px;
             transition: filter 0.2s ease-in-out;
 
             @media all and (prefers-color-scheme: 'dark') {
                 filter: brightness(100) saturate(0);
+            }
+        }
+
+        &--square {
+
+            img {
+                max-height: 55px;
             }
         }
     }

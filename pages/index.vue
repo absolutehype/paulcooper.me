@@ -35,10 +35,10 @@
                     <img src="~/assets/svg/att.svg" alt="AT&T" />
                 </li>
                 <li class="BrandList__item">
-                    <img src="~/assets/svg/pret.svg" alt="Pret a Manger" />
-                </li>
-                <li class="BrandList__item">
                     <img src="~/assets/svg/youtube.svg" alt="YouTube" />
+                </li>
+                <li class="BrandList__item BrandList__item--square">
+                    <img src="~/assets/svg/hp.svg" alt="Hewlett Packard" />
                 </li>
                 <li class="BrandList__item">
                     <img src="~/assets/svg/redbull.svg" alt="Red Bull" />
