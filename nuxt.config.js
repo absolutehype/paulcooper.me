@@ -71,13 +71,9 @@ export default {
     /**
      * Build Modules
      */
-    buildModules: ['nuxt-gsap-module'],
-    /**
-     * GreenSock Animation
-     */
-    gsap: {
-        /* module options */
-    },
+    buildModules: [
+        'nuxt-animejs'
+    ],
     /*
      ** SVG Sprite module configuration
      ** See https://github.com/nuxt-community/svg-sprite-module
