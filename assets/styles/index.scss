@@ -146,8 +146,8 @@ body {
 
     @media all and (min-width: 650px) {
         margin-top: 1.5rem;
-        grid-gap: 1.5rem;
-        grid-template-columns: 20px 20px 1fr;
+        grid-gap: 1rem;
+        grid-template-columns: 25px 25px 1fr;
     }
 
     &__item {
@@ -156,11 +156,8 @@ body {
         display: flex;
 
         @media all and (min-width: 650px) {
-            width: 30px;
-            height: 30px;
-            margin-top: 0rem;
-            grid-gap: 1.5rem;
-            grid-template-columns: 20px 20px 1fr;
+            width: 25px;
+            height: 25px;
         }
     }
 
