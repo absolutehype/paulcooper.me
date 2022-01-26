@@ -116,6 +116,8 @@ body {
 
         a {
             color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid;
         }
     }
 
@@ -132,6 +134,39 @@ body {
             max-width: 12vw;
             margin-right: 3vw;
         }
+    }
+}
+
+.Social {
+    display: grid;
+    grid-template-columns: 20px 20px;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+
+    @media all and (min-width: 650px) {
+        margin-top: 1.5rem;
+        grid-gap: 1.5rem;
+        grid-template-columns: 20px 20px 1fr;
+    }
+
+    &__item {
+        width: 20px;
+        height: 20px;
+        display: flex;
+
+        @media all and (min-width: 650px) {
+            width: 30px;
+            height: 30px;
+            margin-top: 0rem;
+            grid-gap: 1.5rem;
+            grid-template-columns: 20px 20px 1fr;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: none;
     }
 }
 

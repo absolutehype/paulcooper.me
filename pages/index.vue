@@ -2,7 +2,7 @@
     <div class="Home">
         <header class="Masthead">
             <div class="Masthead__inner">
-                <img src="~static/avatar.jpeg" class="Masthead__avatar" alt="Paul Cooper Profile Picture" />
+                <img src="~static/avatar.jpeg" class="Masthead__avatar" alt="Paul Cooper Portrait Picture" />
                 <section class="Masthead__content">
                     <h1>Paul Cooper</h1>
                     <i18n path="HOME_SUMMARY" tag="p">
@@ -13,6 +13,14 @@
                             <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
                         </template>
                     </i18n>
+                    <nav class="Social">
+                        <a href="https://www.instagram.com/absolutehype/" :title="$t('SOCIAL_INSTAGRAM')" class="Social__item">
+                            <img src="~/assets/svg/instagram.svg" alt="Instagram" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/absolutehype/" :title="$t('SOCIAL_LINKEDIN')" class="Social__item">
+                            <img src="~/assets/svg/linkedin.svg" alt="LinkedIn" />
+                        </a>
+                    </nav>
                 </section>
             </div>
         </header>
@@ -49,12 +57,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-    components: {
-        Logo,
-    },
 }
 </script>
 

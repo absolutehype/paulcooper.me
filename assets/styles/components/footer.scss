@@ -49,10 +49,6 @@
 
             @media all and (min-width: $breakpointMedium) {
                 padding: 0 10px;
-
-                &:last-child {
-                    padding-right: 0;
-                }
             }
 
             &:hover {

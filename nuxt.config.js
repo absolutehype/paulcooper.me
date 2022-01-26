@@ -106,20 +106,23 @@ export default {
             {
                 code: 'en',
                 name: 'English',
-                iso: 'en-US',
-                file: 'en-US.js',
+                iso: 'en-GB',
+                file: 'en-GB.js',
+                title: 'Switch to English'
             },
             {
                 code: 'es',
                 name: 'Español',
                 iso: 'es-ES',
                 file: 'es-ES.js',
+                title: 'Cambiar a Español'
             },
             {
                 code: 'fr',
                 name: 'Français',
                 iso: 'fr-FR',
                 file: 'fr-FR.js',
+                title: 'Passer au Français'
             },
         ],
         lazy: true,
