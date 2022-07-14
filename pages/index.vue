@@ -10,7 +10,7 @@
                             <a href="https://en.wikipedia.org/wiki/London" :title="$t('LOCATION')">{{ $t('LOCATION_SHORT') }}</a>
                         </template>
                         <template v-slot:company>
-                            <a href="https://www.hp.com" title="Hewlett Packard">HP</a>
+                            <a href="https://www.humanmademachine.com/">Human Made Machine</a>
                         </template>
                     </i18n>
                     <nav class="Social">
