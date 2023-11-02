@@ -1,6 +1,0 @@
-{
-    "extends": "eslint:recommended",
-    "tabWidth": 4,
-    "semi": false,
-    "singleQuote": true
-}

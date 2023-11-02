@@ -5,7 +5,7 @@ import headerImg from '/public/images/header.jpeg';
 export default function Home() {
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
-      <header className="masthead flex flex-col items-center w-full" style={{
+      <header className="masthead flex flex-col items-center w-full text-[color:var(--colour-text-secondary)]" style={{
         backgroundImage: `url(${ headerImg.src })`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
@@ -36,8 +36,34 @@ export default function Home() {
         </section>
       </header>
 
-      <section className="container max-w-[960px] p-6">
+      <section className="container flex flex-col max-w-[960px] p-6 text-center md:text-left p-10 py-14 md:p-20 gap-10">
         <p>In a nutshell, i’m an ambitious and passionate front end developer. I strive to produce beautiful products that inspire and delight. I have a little over a decade of industry experience in both design and development. I’ve worked with great people, at some innovative companies for some industry leading brands.</p>
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <li className="flex items-center justify-center">
+            <Image src="/images/google.svg" alt="Google" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/barclays.svg" alt="Barclays" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/tesco.svg" alt="Tesco" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/cruk.svg" alt="Cancer Research UK" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/att.svg" alt="AT&T" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/youtube.svg" alt="YouTube" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/hp.svg" alt="Hewlett Packard" width={200} height={200} className="brand-logo" />
+          </li>
+          <li className="flex items-center justify-center">
+            <Image src="/images/redbull.svg" alt="Red Bull" width={200} height={200} className="brand-logo" />
+          </li>
+        </ul>
       </section>
     </main>
   )
