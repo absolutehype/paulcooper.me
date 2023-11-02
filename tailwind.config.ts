@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontWeight: {
+        'normal': '500'
+      },
+      fontSize: {
+        'md': '1.4rem',
+        'lg': '1.6rem',
+        'xl': '1.8rem',
+        '2xl': '2rem',
+        '3xl': '3rem',
+        '4xl': '3.6rem',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

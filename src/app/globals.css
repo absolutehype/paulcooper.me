@@ -3,25 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --colour-bg: #f2f3f4;
+  --colour-text-primary: #243849;
+  --colour-text-secondary: #fff
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --colour-bg: #14161b;
+    --colour-text-primary: #fff;
+    --colour-text-secondary: #fff;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--colour-text-primary);
+  background: var(--colour-bg);
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.masthead {
+  -webkit-clip-path: polygon(0 0,100% 0,100% 100%,0 calc(100% - 4vw));
+  clip-path: polygon(0 0,100% 0,100% 100%,0 calc(100% - 4vw));
+}
+
+@layer utilities {
+  .link {
+    @apply underline;
+    @apply underline-offset-[5px];
+    @apply decoration-1;
+    @apply hover:decoration-2;
+  }
 }
