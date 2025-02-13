@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Head from "next/head";
 import { Cormorant_Garamond } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -25,7 +27,10 @@ export default function RootLayout({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <body className={cormorant.className}>{children}</body>
+      <body className={cormorant.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
