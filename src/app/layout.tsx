@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { Cormorant_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={cormorant.className}>
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
