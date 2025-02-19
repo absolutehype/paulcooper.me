@@ -135,7 +135,7 @@ export default function Home() {
           </li>
         </ul>
       </section>
-      <footer className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition">
+      {/* <footer className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition">
         <ul className="flex items-center justify-center gap-10">
           <li>
             <a href="#">English</a>
@@ -147,7 +147,7 @@ export default function Home() {
             <a href="#">Spanish</a>
           </li>
         </ul>
-      </footer>
+      </footer> */}
     </main>
   );
 }
