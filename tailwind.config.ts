@@ -1,31 +1,22 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontWeight: {
-        'normal': '500'
+        normal: "500",
       },
       fontSize: {
-        'md': '1.4rem',
-        'lg': '1.6rem',
-        'xl': '1.8rem',
-        '2xl': '2rem',
-        '3xl': '3rem',
-        '4xl': '3.6rem',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        md: "1.4rem",
+        lg: "1.6rem",
+        xl: "1.8rem",
+        "2xl": "2rem",
+        "3xl": "3rem",
+        "4xl": "3.6rem",
       },
     },
   },
-  plugins: [],
-}
-export default config
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+};
+export default config;
