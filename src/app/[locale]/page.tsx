@@ -5,7 +5,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl"; // declare this import
 
 export default function Home() {
-  const t = useTranslations(); // declare the hook passing into parameter a context name
+  const t = useTranslations();
 
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
