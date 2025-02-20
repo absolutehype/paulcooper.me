@@ -1,8 +1,12 @@
 import Image from "next/image";
 import avatarImg from "/public/images/avatar.jpeg";
 import headerImg from "/public/images/header.jpeg";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl"; // declare this import
 
 export default function Home() {
+  const t = useTranslations(); // declare the hook passing into parameter a context name
+
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
       <header
@@ -29,18 +33,26 @@ export default function Home() {
               Paul Cooper
             </h1>
             <p>
-              <a
-                href="https://en.wikipedia.org/wiki/London"
-                className="link"
-                title="London, UK"
-              >
-                London
-              </a>{" "}
-              based Front End Developer, hobbyist photographer and
-              self-confessed tech nerd working at{" "}
-              <a href="https://www.humanmademachine.com/" className="link">
-                Human Made Machine
-              </a>
+              {t.rich("HOME.SUMMARY", {
+                location: (chunks) => (
+                  <a
+                    href="https://en.wikipedia.org/wiki/London"
+                    className="border-b"
+                    title={String(chunks)}
+                  >
+                    {chunks}
+                  </a>
+                ),
+                company: (chunks) => (
+                  <a
+                    href="https://www.humanmademachine.com/"
+                    className="border-b"
+                    title={String(chunks)}
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </p>
             <nav className="flex gap-6 mt-6">
               <a
@@ -71,13 +83,7 @@ export default function Home() {
       </header>
 
       <section className="container flex flex-col max-w-[960px] p-10 md:p-20 lg:py-30 text-center md:text-left gap-10 md:gap-20 lg:gap-30">
-        <p>
-          In a nutshell, i’m an ambitious and passionate front end developer. I
-          strive to produce beautiful products that inspire and delight. I have
-          a little over a decade of industry experience in both design and
-          development. I’ve worked with great people, at some innovative
-          companies for some industry leading brands.
-        </p>
+        <p>{t("HOME.BODY")}</p>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-8 dark:filter dark:saturate-0 dark:brightness-[100] transition ">
           <li className="flex items-center justify-center">
             <Image
@@ -135,19 +141,25 @@ export default function Home() {
           </li>
         </ul>
       </section>
-      {/* <footer className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition">
+      <footer className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition">
         <ul className="flex items-center justify-center gap-10">
           <li>
-            <a href="#">English</a>
+            <Link href="/" locale="en">
+              English
+            </Link>
           </li>
           <li>
-            <a href="#">French</a>
+            <Link href="/" locale="fr">
+              Français
+            </Link>
           </li>
           <li>
-            <a href="#">Spanish</a>
+            <Link href="/" locale="es">
+              Español
+            </Link>
           </li>
         </ul>
-      </footer> */}
+      </footer>
     </main>
   );
 }
