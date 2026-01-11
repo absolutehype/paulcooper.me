@@ -16,6 +16,10 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 body {
   color: var(--colour-text-primary);
   background: var(--colour-bg);

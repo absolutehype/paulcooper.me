@@ -1,6 +1,7 @@
 import Image from "next/image";
 import avatarImg from "/public/images/avatar.jpeg";
 import headerImg from "/public/images/header.jpeg";
+import * as motion from "motion/react-client";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl"; // declare this import
 
