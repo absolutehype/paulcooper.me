@@ -1,7 +1,6 @@
 import Image from "next/image";
-import avatarImg from "/public/images/avatar.jpeg";
-import headerImg from "/public/images/header.jpeg";
 import * as motion from "motion/react-client";
+import avatarImage from "../../../public/images/avatar.jpeg";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl"; // declare this import
 
@@ -13,17 +12,16 @@ export default function Home() {
       <header
         className="masthead text-white flex flex-col items-center w-full"
         style={{
-          backgroundImage: `url(${headerImg.src})`,
+          backgroundImage: `url("/images/header.jpeg")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
         <section className="container max-w-[960px] flex flex-col md:flex-row text-center md:text-left gap-6 md:gap-10 lg:gap-16 items-center p-10 pb-20 md:p-20 md:pb-30 lg:py-40 lg:pb:50">
           <Image
-            src={avatarImg}
+            src={avatarImage}
             alt="Paul Cooper Avatar"
             className="rounded-full max-w-[20vw] md:max-w-[16vw] lg:max-w-[12vw]"
-            placeholder="blur"
             sizes="(max-width: 768px) 64px,
               (max-width: 1200px) 16vw,
               12vw"
