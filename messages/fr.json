@@ -1,10 +1,10 @@
 {
   "HOME": {
-    "SUMMARY": "Développeur Front End basé sur <location>Londres</location>, photographe amateur et nerd technique avoué travaillant chez <company>Human Made Machine</company>",
-    "BODY": "En un mot, je suis un développeur front-end ambitieux et passionné. Je m'efforce de produire de beaux produits qui inspirent et ravissent. J'ai un peu plus d'une décennie d'expérience dans l'industrie à la fois en conception et en développement. J'ai travaillé avec des gens formidables, dans des entreprises innovantes pour certaines marques leaders du secteur."
+    "SUMMARY": "Ingénieur en design basé à <location>Londres</location>, photographe amateur et geek assumé, travaillant chez <company>Human Made Machine</company>",
+    "BODY": "Pour faire simple, je suis un développeur front end ambitieux et passionné, avec un œil attentif pour le design. J’aime créer de beaux produits qui inspirent et donnent envie. J’ai un peu plus de dix ans d’expérience dans l’industrie, à la fois en design et en développement, et j’ai eu la chance de travailler avec des personnes formidables, dans des entreprises innovantes et pour des marques de premier plan."
   },
   "NOT_FOUND": {
-    "TITLE": "Page non trouvée",
-    "BODY": "La page que vous recherchiez n'a pas pu être trouvée"
+    "TITLE": "Page introuvable",
+    "BODY": "La page que vous recherchez est introuvable"
   }
 }
