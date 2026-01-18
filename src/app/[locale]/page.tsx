@@ -17,16 +17,29 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        <section className="container max-w-[960px] flex flex-col md:flex-row text-center md:text-left gap-6 md:gap-10 lg:gap-16 items-center p-10 pb-20 md:p-20 md:pb-30 lg:py-40 lg:pb:50">
-          <Image
-            src={avatarImage}
-            alt="Paul Cooper Avatar"
-            className="rounded-full max-w-[20vw] md:max-w-[16vw] lg:max-w-[12vw]"
-            sizes="(max-width: 768px) 64px,
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ amount: 0.3 }}
+          className="container max-w-[960px] flex flex-col md:flex-row text-center md:text-left gap-6 md:gap-10 lg:gap-16 items-center p-10 pb-20 md:p-20 md:pb-30 lg:py-40 lg:pb:50"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ amount: 0.3 }}
+          >
+            <Image
+              src={avatarImage}
+              alt="Paul Cooper Avatar"
+              className="rounded-full max-w-[20vw] md:max-w-[16vw] lg:max-w-[12vw] 2xl:max-w-[10vw] transition"
+              sizes="(max-width: 768px) 64px,
               (max-width: 1200px) 16vw,
               12vw"
-            priority
-          />
+              priority
+            />
+          </motion.div>
           <div className="flex flex-col items-center md:items-start">
             <h1 className="text-2xl md:text-3xl lg:text-4xl m-0">
               Paul Cooper
@@ -78,10 +91,16 @@ export default function Home() {
               </a>
             </nav>
           </div>
-        </section>
+        </motion.section>
       </header>
 
-      <section className="container flex flex-col max-w-[960px] p-10 md:p-20 lg:py-30 text-center md:text-left gap-10 md:gap-20 lg:gap-30">
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="container flex flex-col max-w-[960px] p-10 md:p-20 lg:py-30 text-center md:text-left gap-10 md:gap-20 lg:gap-30"
+      >
         <p>{t("HOME.BODY")}</p>
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-8 dark:filter dark:saturate-0 dark:brightness-[100] transition ">
           <li className="flex items-center justify-center">
@@ -139,8 +158,14 @@ export default function Home() {
             />
           </li>
         </ul>
-      </section>
-      <footer className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition">
+      </motion.section>
+      <motion.footer
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="container text-md max-w-[960px] p-10 md:p-20 lg:py-30 text-center border-t border-[rgba(0,0,0,0.1)] dark:border-[rgba(255,255,255,0.1)] transition"
+      >
         <ul className="flex items-center justify-center gap-10">
           <li>
             <Link href="/" locale="en">
@@ -158,7 +183,7 @@ export default function Home() {
             </Link>
           </li>
         </ul>
-      </footer>
+      </motion.footer>
     </main>
   );
 }
