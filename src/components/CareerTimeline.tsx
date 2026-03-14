@@ -85,8 +85,8 @@ function TimelineEntry({
       {/* year label (desktop) */}
       <div className="hidden md:block flex-shrink-0 w-[148px] pt-[4px] pr-8 text-right">
         <span
-          className="sticky block text-base tabular-nums"
-          style={{ top: "7rem", color: "var(--colour-text-primary)", opacity: 0.45 }}
+          className="sticky block text-xl tabular-nums"
+          style={{ top: "7rem", color: "var(--colour-text-primary)", opacity: 0.6 }}
         >
           {entry.startYear}
         </span>
