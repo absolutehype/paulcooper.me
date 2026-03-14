@@ -28,7 +28,7 @@ function TimelineDot() {
       initial={{ opacity: 0, scale: 0.4 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45, type: "spring", stiffness: 180, damping: 16 }}
-      viewport={{ once: true, amount: 1 }}
+      viewport={{ amount: 1 }}
     >
       <div
         className="absolute w-[11px] h-[11px] rounded-full"
@@ -74,7 +74,7 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ amount: 0.12 }}
     >
       {/* year label (desktop) */}
       <div className="hidden md:block flex-shrink-0 w-[148px] pr-8 text-right">
@@ -150,7 +150,7 @@ export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ amount: 0.5 }}
         >
           Experience
         </motion.h2>
