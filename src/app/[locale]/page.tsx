@@ -168,17 +168,17 @@ export default function Home() {
       >
         <ul className="flex items-center justify-center gap-10">
           <li>
-            <Link href="/" locale="en">
+            <Link href="/" locale="en" scroll={false}>
               English
             </Link>
           </li>
           <li>
-            <Link href="/" locale="fr">
+            <Link href="/" locale="fr" scroll={false}>
               Français
             </Link>
           </li>
           <li>
-            <Link href="/" locale="es">
+            <Link href="/" locale="es" scroll={false}>
               Español
             </Link>
           </li>
