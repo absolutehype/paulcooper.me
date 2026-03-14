@@ -10,11 +10,11 @@ Feel free to open an issue with any thoughts or feedback.
 
 | Concern | Technology |
 |---|---|
-| Framework | [Next.js 16](https://nextjs.org/) (App Router) |
-| Language | TypeScript 5 (strict mode) |
-| Styling | Tailwind CSS 3 + CSS custom properties |
-| Animation | [Motion](https://motion.dev/) (Framer Motion v12) |
-| i18n | [next-intl 4](https://next-intl.dev/) |
+| Framework | [Next.js](https://nextjs.org/) (App Router) |
+| Language | TypeScript (strict mode) |
+| Styling | Tailwind + CSS |
+| Animation | [Motion](https://motion.dev/) (Framer Motion) |
+| i18n | [next-intl ](https://next-intl.dev/) |
 | Fonts | Cormorant Garamond via Google Fonts |
 | Analytics | Vercel Analytics + Speed Insights |
 | Hosting | [Vercel](https://vercel.com/) |
