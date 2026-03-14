@@ -6,6 +6,11 @@ import { usePathname } from "next/navigation";
 
 type Phase = "spinner" | "flag" | "idle";
 
+// Module-level — survives React remounts, tracks locale across locale switches.
+// When the [locale] layout remounts (new dynamic segment), this lets us detect
+// that the previous locale was different from the current one.
+let prevLocaleGlobal = "";
+
 function getLocale(pathname: string): string {
   const match = pathname.match(/^\/(fr|es)(\/|$)/);
   return match ? match[1] : "en";
@@ -42,27 +47,11 @@ function FlagCircle({ locale }: { locale: string }) {
           {/* Union Jack */}
           <rect x="4" y="4" width="36" height="36" fill="#012169" />
           {/* White saltire (×) */}
-          <rect
-            x="4" y="20" width="36" height="4"
-            fill="white"
-            transform="rotate(45 22 22)"
-          />
-          <rect
-            x="4" y="20" width="36" height="4"
-            fill="white"
-            transform="rotate(-45 22 22)"
-          />
+          <rect x="4" y="20" width="36" height="4" fill="white" transform="rotate(45 22 22)" />
+          <rect x="4" y="20" width="36" height="4" fill="white" transform="rotate(-45 22 22)" />
           {/* Red saltire (×, narrower, centred) */}
-          <rect
-            x="4" y="21" width="36" height="2"
-            fill="#C8102E"
-            transform="rotate(45 22 22)"
-          />
-          <rect
-            x="4" y="21" width="36" height="2"
-            fill="#C8102E"
-            transform="rotate(-45 22 22)"
-          />
+          <rect x="4" y="21" width="36" height="2" fill="#C8102E" transform="rotate(45 22 22)" />
+          <rect x="4" y="21" width="36" height="2" fill="#C8102E" transform="rotate(-45 22 22)" />
           {/* White cross (+) */}
           <rect x="4" y="18.5" width="36" height="7" fill="white" />
           <rect x="18.5" y="4" width="7" height="36" fill="white" />
@@ -93,47 +82,56 @@ function FlagCircle({ locale }: { locale: string }) {
 }
 
 export function PageLoader() {
-  const [phase, setPhase] = useState<Phase>("spinner");
-  const [flagLocale, setFlagLocale] = useState("en");
   const pathname = usePathname();
-  const prevLocale = useRef("");
+  const locale = getLocale(pathname);
+
+  // Detect cross-locale mount at render time (before effects), using the
+  // module-level variable which persists across layout remounts.
+  const prevLocaleAtMount = prevLocaleGlobal;
+  const isCrossLocaleMount = prevLocaleAtMount !== "" && prevLocaleAtMount !== locale;
+
+  const [phase, setPhase] = useState<Phase>("spinner");
+  const [flagLocale, setFlagLocale] = useState(locale);
   const isInitialized = useRef(false);
 
-  // Initial page load — show spinner then hide
+  // Mount effect: commit global locale, run phase sequence.
   useEffect(() => {
-    prevLocale.current = getLocale(pathname);
-    const t = setTimeout(() => {
-      setPhase("idle");
-      isInitialized.current = true;
-    }, 1400);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const savedGlobal = prevLocaleGlobal;
+    prevLocaleGlobal = locale;
 
-  // Route / locale transitions
-  useEffect(() => {
-    if (!isInitialized.current) return;
-
-    const newLocale = getLocale(pathname);
-    const isLocaleChange = prevLocale.current !== newLocale;
-    prevLocale.current = newLocale;
-
-    if (isLocaleChange) {
-      // Locale switch: spinner → flag → hide
-      setFlagLocale(newLocale);
-      setPhase("spinner");
-      const t1 = setTimeout(() => setPhase("flag"), 650);
-      const t2 = setTimeout(() => setPhase("idle"), 1250);
+    if (isCrossLocaleMount) {
+      // Locale switch: spinner → flag → idle
+      setFlagLocale(locale);
+      const t1 = setTimeout(() => setPhase("flag"), 600);
+      const t2 = setTimeout(() => {
+        setPhase("idle");
+        isInitialized.current = true;
+      }, 1350);
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
+        prevLocaleGlobal = savedGlobal; // restore for React StrictMode double-invoke
       };
     } else {
-      // Regular route change: spinner → hide
-      setPhase("spinner");
-      const t = setTimeout(() => setPhase("idle"), 700);
-      return () => clearTimeout(t);
+      // Initial load or same-locale hard navigation
+      const t = setTimeout(() => {
+        setPhase("idle");
+        isInitialized.current = true;
+      }, 1400);
+      return () => {
+        clearTimeout(t);
+        prevLocaleGlobal = savedGlobal;
+      };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Within-locale client navigations (layout persists — pathname changes in place).
+  useEffect(() => {
+    if (!isInitialized.current) return;
+    setPhase("spinner");
+    const t = setTimeout(() => setPhase("idle"), 700);
+    return () => clearTimeout(t);
   }, [pathname]);
 
   return (
@@ -155,7 +153,7 @@ export function PageLoader() {
             backgroundColor: "var(--colour-bg)",
           }}
         >
-          {/* Fixed-size wrapper so spinner and flag can crossfade in place */}
+          {/* Fixed-size wrapper so spinner and flag crossfade in place */}
           <div style={{ position: "relative", width: 44, height: 44 }}>
             <AnimatePresence initial={false}>
               {phase === "spinner" && (
