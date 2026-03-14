@@ -64,23 +64,17 @@ function EntryContent({ html }: { html: string }) {
 
 // ─── entry ──────────────────────────────────────────────────────────────────
 
-function TimelineEntry({
-  entry,
-  index,
-}: {
-  entry: ExperienceEntry;
-  index: number;
-}) {
+function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
   const bottomPad = Math.round(72 + entry.durationFraction * 56);
 
   return (
     <motion.div
       className="flex"
       style={{ paddingBottom: bottomPad }}
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.04, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: 0.12 }}
     >
       {/* year label (desktop) */}
       <div className="hidden md:block flex-shrink-0 w-[148px] pr-8 text-right">
@@ -151,7 +145,7 @@ export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
       <div className="container max-w-[960px] mx-auto px-10 md:px-20 py-16 md:py-24 lg:py-32">
 
         <motion.h2
-          className="text-xl md:text-2xl mb-16 md:mb-20 text-center"
+          className="text-3xl md:text-4xl mb-16 md:mb-20 text-center"
           style={{ fontStyle: "italic", color: "var(--colour-text-primary)" }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -177,8 +171,8 @@ export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
             }}
           />
 
-          {entries.map((entry, index) => (
-            <TimelineEntry key={entry.slug} entry={entry} index={index} />
+          {entries.map((entry) => (
+            <TimelineEntry key={entry.slug} entry={entry} />
           ))}
         </div>
       </div>
