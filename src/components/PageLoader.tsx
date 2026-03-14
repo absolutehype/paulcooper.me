@@ -208,6 +208,11 @@ export function PageLoader() {
                     fill="none"
                     style={{ color: "var(--colour-text-primary)" }}
                   >
+                    <style>{`
+                      @keyframes page-loader-spin {
+                        to { transform: rotate(360deg); }
+                      }
+                    `}</style>
                     <circle
                       cx="22"
                       cy="22"
@@ -216,15 +221,12 @@ export function PageLoader() {
                       strokeWidth="1"
                       opacity="0.12"
                     />
-                    <motion.g
-                      style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1.4,
-                        ease: "linear",
-                        repeat: Infinity,
-                      }}
-                    >
+                    {/* CSS animation for rotation — immune to Framer Motion hydration/initial={false} */}
+                    <g style={{
+                      transformBox: "fill-box",
+                      transformOrigin: "50% 50%",
+                      animation: "page-loader-spin 1.4s linear infinite",
+                    }}>
                       <motion.circle
                         cx="22"
                         cy="22"
@@ -232,7 +234,6 @@ export function PageLoader() {
                         stroke="currentColor"
                         strokeWidth="1.5"
                         strokeLinecap="round"
-                        initial={{ pathLength: 0.2 }}
                         animate={{ pathLength: [0.15, 0.75, 0.15] }}
                         transition={{
                           duration: 1.4,
@@ -240,7 +241,7 @@ export function PageLoader() {
                           repeat: Infinity,
                         }}
                       />
-                    </motion.g>
+                    </g>
                   </svg>
                 </motion.div>
               )}
