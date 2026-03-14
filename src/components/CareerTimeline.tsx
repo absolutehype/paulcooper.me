@@ -83,17 +83,17 @@ function TimelineEntry({
       viewport={{ once: true, amount: 0.15 }}
     >
       {/* year label (desktop) */}
-      <div className="hidden md:block flex-shrink-0 w-[148px] pt-[4px] pr-8 text-right">
+      <div className="hidden md:block flex-shrink-0 w-[148px] pr-8 text-right">
         <span
-          className="sticky block text-xl tabular-nums"
+          className="sticky block text-xl leading-snug tabular-nums"
           style={{ top: "7rem", color: "var(--colour-text-primary)", opacity: 0.6 }}
         >
           {entry.startYear}
         </span>
       </div>
 
-      {/* dot */}
-      <div className="flex-shrink-0 w-10 flex justify-center pt-[5px]">
+      {/* dot — offset matches half the h3 cap-height at text-xl/leading-snug ≈ 13px */}
+      <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
         <TimelineDot />
       </div>
 
