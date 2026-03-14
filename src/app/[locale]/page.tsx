@@ -2,10 +2,13 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import avatarImage from "../../../public/images/avatar.jpeg";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl"; // declare this import
+import { useTranslations } from "next-intl";
+import { CareerTimeline } from "@/components/CareerTimeline";
+import { getExperience } from "@/lib/experience";
 
 export default function Home() {
   const t = useTranslations();
+  const experience = getExperience();
 
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
@@ -159,6 +162,8 @@ export default function Home() {
           </li>
         </ul>
       </motion.section>
+      <CareerTimeline entries={experience} />
+
       <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
