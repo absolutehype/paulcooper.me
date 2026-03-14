@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { CareerTimeline } from "@/components/CareerTimeline";
 import { getExperience } from "@/lib/experience";
+import { LogoCarousel } from "@/components/LogoCarousel";
 
 export default function Home() {
   const t = useTranslations();
@@ -105,62 +106,7 @@ export default function Home() {
         className="container flex flex-col max-w-[960px] p-10 md:p-20 lg:py-30 text-center md:text-left gap-10 md:gap-20 lg:gap-30"
       >
         <p>{t("HOME.BODY")}</p>
-        <ul className="grid grid-cols-2 md:grid-cols-4 gap-8 dark:filter dark:saturate-0 dark:brightness-[100] transition ">
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/google.svg"
-              alt="Google"
-              width={111}
-              height={35}
-            />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/barclays.svg"
-              alt="Barclays"
-              width={138}
-              height={23}
-            />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/tesco.svg"
-              alt="Tesco"
-              width={122}
-              height={35}
-            />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/cruk.svg"
-              alt="Cancer Research UK"
-              width={124}
-              height={35}
-            />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image src="/images/att.svg" alt="AT&T" width={85} height={35} />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/youtube.svg"
-              alt="YouTube"
-              width={84}
-              height={35}
-            />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image src="/images/hp.svg" alt="HP Inc" width={55} height={55} />
-          </li>
-          <li className="flex items-center justify-center">
-            <Image
-              src="/images/redbull.svg"
-              alt="Red Bull"
-              width={138}
-              height={32}
-            />
-          </li>
-        </ul>
+        <LogoCarousel />
       </motion.section>
       <CareerTimeline entries={experience} />
 
