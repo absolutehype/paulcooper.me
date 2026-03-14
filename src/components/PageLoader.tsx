@@ -217,7 +217,7 @@ export function PageLoader() {
                       opacity="0.12"
                     />
                     <motion.g
-                      style={{ transformOrigin: "22px 22px" }}
+                      style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
                       animate={{ rotate: 360 }}
                       transition={{
                         duration: 1.4,
