@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "@/app/globals.css";
 import { ReactNode } from "react";
+import { PageLoader } from "@/components/PageLoader";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default async function LocaleLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <body className={cormorant.className}>
+        <PageLoader />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
