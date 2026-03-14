@@ -2,10 +2,13 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import avatarImage from "../../../public/images/avatar.jpeg";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl"; // declare this import
+import { useTranslations } from "next-intl";
+import { CareerTimeline } from "@/components/CareerTimeline";
+import { getExperience } from "@/lib/experience";
 
 export default function Home() {
   const t = useTranslations();
+  const experience = getExperience();
 
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
@@ -98,7 +101,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.2 }}
         className="container flex flex-col max-w-[960px] p-10 md:p-20 lg:py-30 text-center md:text-left gap-10 md:gap-20 lg:gap-30"
       >
         <p>{t("HOME.BODY")}</p>
@@ -159,6 +162,8 @@ export default function Home() {
           </li>
         </ul>
       </motion.section>
+      <CareerTimeline entries={experience} />
+
       <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
