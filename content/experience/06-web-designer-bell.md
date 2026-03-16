@@ -6,4 +6,4 @@ endYear: 2008
 order: 6
 ---
 
-Where it all started. Client sites, email campaigns, Magento shops — and the dawning realisation that I enjoyed building things on the web.
+Where it all started. A busy agency building client sites, email campaigns, and Magento shops — and the dawning realisation that I genuinely loved building things for the web.
