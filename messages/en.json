@@ -3,6 +3,9 @@
     "SUMMARY": "<location>London</location> based Design Engineer, hobbyist photographer and self-confessed tech nerd working at <company>Human Made Machine</company>",
     "BODY": "In a nutshell, i’m an ambitious and passionate front end developer with a keen eye for design. I strive to produce beautiful products that inspire and delight. I have a little over a decade of industry experience in both design and development. I’ve worked with great people, at some innovative companies for some industry leading brands."
   },
+  "EXPERIENCE": {
+    "HEADING": "Experience"
+  },
   "NOT_FOUND": {
     "TITLE": "Page not found",
     "BODY": "The page that you were looking for could not be found"

@@ -5,6 +5,7 @@ import {
   motion,
   useScroll,
   useSpring,
+  useInView,
 } from "motion/react";
 import type { ExperienceEntry } from "@/lib/experience";
 
@@ -21,22 +22,38 @@ function formatRange(startYear: number, endYear: number | null): string {
 
 // ─── dot ────────────────────────────────────────────────────────────────────
 
-function TimelineDot() {
+function TimelineDot({ isActive }: { isActive: boolean }) {
   return (
     <motion.div
-      className="relative flex items-center justify-center"
+      // Explicit 15×15 size so the IntersectionObserver has a real bounding box
+      // and the outer ring (inset-0) fills it correctly.
+      className="relative flex items-center justify-center w-[15px] h-[15px]"
       initial={{ opacity: 0, scale: 0.4 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45, type: "spring", stiffness: 180, damping: 16 }}
-      viewport={{ amount: 1 }}
+      viewport={{ amount: 0.5 }}
     >
-      <div
-        className="absolute w-[11px] h-[11px] rounded-full"
-        style={{ border: "1px solid var(--colour-text-primary)", opacity: 0.25 }}
+      {/* Outer ring — pulses when the timeline has scrolled past this entry */}
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{ border: "1.5px solid var(--colour-text-primary)" }}
+        animate={
+          isActive
+            ? { opacity: [0.3, 0.52, 0.3], scale: [1, 1.28, 1] }
+            : { opacity: 0.3, scale: 1 }
+        }
+        transition={
+          isActive
+            ? { duration: 3.2, ease: [0.45, 0, 0.55, 1], repeat: Infinity, repeatType: "loop" }
+            : { duration: 0.7, ease: "easeOut" }
+        }
       />
-      <div
-        className="w-[5px] h-[5px] rounded-full"
+      {/* Inner dot — brightens when active */}
+      <motion.div
+        className="w-[7px] h-[7px] rounded-full"
         style={{ backgroundColor: "var(--colour-text-primary)" }}
+        animate={{ opacity: isActive ? 1 : 0.6 }}
+        transition={{ duration: 0.5 }}
       />
     </motion.div>
   );
@@ -53,7 +70,7 @@ function TimelineDot() {
 function EntryContent({ html }: { html: string }) {
   return (
     <div
-      className="tl-prose text-base md:text-lg leading-relaxed"
+      className="tl-prose text-md md:text-lg leading-relaxed"
       style={{ color: "var(--colour-text-primary)", opacity: 0.82 }}
       // Content is trusted: parsed from owner-authored markdown via
       // markdownToHtml() which emits only <p>/<ul>/<li> — no user input.
@@ -67,8 +84,14 @@ function EntryContent({ html }: { html: string }) {
 function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
   const bottomPad = Math.round(72 + entry.durationFraction * 56);
 
+  // Dot becomes "active" (pulsing) once the entry's top edge has crossed
+  // 45% from the top of the viewport — i.e. the timeline fill has reached it.
+  const ref = useRef<HTMLDivElement>(null);
+  const isActive = useInView(ref, { margin: "0px 0px -55% 0px" });
+
   return (
     <motion.div
+      ref={ref}
       className="flex"
       style={{ paddingBottom: bottomPad }}
       initial={{ opacity: 0, y: 28 }}
@@ -86,9 +109,11 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
         </span>
       </div>
 
-      {/* dot — offset matches half the h3 cap-height at text-xl/leading-snug ≈ 13px */}
-      <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
-        <TimelineDot />
+      {/* dot — centre aligns with the cap-height of the text-xl year label.
+           calc(1.2rem - 7.5px): 1.2rem ≈ visual cap-height offset for text-xl/leading-snug
+           in Cormorant Garamond; 7.5px = half the 15px dot. */}
+      <div className="flex-shrink-0 w-10 flex justify-center" style={{ paddingTop: "calc(1.2rem - 7.5px)" }}>
+        <TimelineDot isActive={isActive} />
       </div>
 
       {/* content */}
@@ -126,7 +151,7 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
 
 // ─── main ────────────────────────────────────────────────────────────────────
 
-export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
+export function CareerTimeline({ entries, heading = "Experience" }: { entries: ExperienceEntry[]; heading?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -145,26 +170,42 @@ export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
       <div className="container max-w-[960px] mx-auto px-10 md:px-20 py-16 md:py-24 lg:py-32">
 
         <motion.h2
-          className="text-3xl md:text-4xl mb-16 md:mb-20 text-center"
+          className="text-2xl md:text-4xl mb-16 md:mb-20 text-center"
           style={{ fontStyle: "italic", color: "var(--colour-text-primary)" }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ amount: 0.5 }}
         >
-          Experience
+          {heading}
         </motion.h2>
 
         <div ref={containerRef} className="relative">
-          {/* track */}
+          {/* track — on mobile: left-5 (1.25rem = centre of the w-10 dot column).
+               on desktop: 148px (year label) + half of w-10 (1.25rem) = 148px + 1.25rem,
+               ensuring the line sits at the exact horizontal centre of the dot. */}
           <div
-            className="absolute top-0 bottom-0 left-5 md:left-[168px] w-px pointer-events-none"
-            style={{ backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
+            className="absolute top-0 bottom-0 w-px pointer-events-none md:hidden"
+            style={{ left: "1.25rem", backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
+          />
+          <div
+            className="absolute top-0 bottom-0 w-px pointer-events-none hidden md:block"
+            style={{ left: "calc(148px + 1.25rem)", backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
           />
           {/* scroll-driven fill */}
           <motion.div
-            className="absolute top-0 bottom-0 left-5 md:left-[168px] w-px origin-top pointer-events-none"
+            className="absolute top-0 bottom-0 w-px origin-top pointer-events-none md:hidden"
             style={{
+              left: "1.25rem",
+              backgroundColor: "var(--colour-text-primary)",
+              opacity: 0.55,
+              scaleY: lineScaleY,
+            }}
+          />
+          <motion.div
+            className="absolute top-0 bottom-0 w-px origin-top pointer-events-none hidden md:block"
+            style={{
+              left: "calc(148px + 1.25rem)",
               backgroundColor: "var(--colour-text-primary)",
               opacity: 0.55,
               scaleY: lineScaleY,

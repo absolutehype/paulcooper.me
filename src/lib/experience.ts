@@ -41,8 +41,10 @@ function markdownToHtml(markdown: string): string {
     .join("");
 }
 
-export function getExperience(): ExperienceEntry[] {
-  const dir = path.join(process.cwd(), "content/experience");
+export function getExperience(locale = "en"): ExperienceEntry[] {
+  const localeDir = path.join(process.cwd(), "content/experience", locale);
+  const fallbackDir = path.join(process.cwd(), "content/experience/en");
+  const dir = fs.existsSync(localeDir) ? localeDir : fallbackDir;
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
 
   const currentYear = new Date().getFullYear();
