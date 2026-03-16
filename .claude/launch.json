@@ -5,7 +5,7 @@
       "name": "Claude paulcooper.me dev",
       "runtimeExecutable": "/Users/paulcooper/.local/bin/node",
       "runtimeArgs": ["./node_modules/.bin/next", "dev", "--webpack"],
-      "port": 3000
+      "autoPort": true
     }
   ]
 }

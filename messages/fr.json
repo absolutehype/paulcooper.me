@@ -3,6 +3,9 @@
     "SUMMARY": "Ingénieur en design basé à <location>Londres</location>, photographe amateur et geek assumé, travaillant chez <company>Human Made Machine</company>",
     "BODY": "Pour faire simple, je suis un développeur front end ambitieux et passionné, avec un œil attentif pour le design. J’aime créer de beaux produits qui inspirent et donnent envie. J’ai un peu plus de dix ans d’expérience dans l’industrie, à la fois en design et en développement, et j’ai eu la chance de travailler avec des personnes formidables, dans des entreprises innovantes et pour des marques de premier plan."
   },
+  "EXPERIENCE": {
+    "HEADING": "Expérience"
+  },
   "NOT_FOUND": {
     "TITLE": "Page introuvable",
     "BODY": "La page que vous recherchez est introuvable"

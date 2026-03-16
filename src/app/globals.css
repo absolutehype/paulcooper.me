@@ -43,6 +43,22 @@ body {
   }
 }
 
+/* ── Logo carousel ──────────────────────────────────────────────────────── */
+
+@keyframes logo-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.logo-marquee {
+  animation: logo-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee:hover {
+  animation-play-state: paused;
+}
+
 /* ── Career timeline prose ───────────────────────────────────────────────── */
 
 .tl-prose p {
