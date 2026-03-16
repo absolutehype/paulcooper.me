@@ -185,7 +185,7 @@ export function CareerTimeline({ entries, heading = "Experience" }: { entries: E
                on desktop: 148px (year label) + half of w-10 (1.25rem) = 148px + 1.25rem,
                ensuring the line sits at the exact horizontal centre of the dot. */}
           <div
-            className="absolute top-0 bottom-0 w-px pointer-events-none"
+            className="absolute top-0 bottom-0 w-px pointer-events-none md:hidden"
             style={{ left: "1.25rem", backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
           />
           <div
