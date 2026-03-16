@@ -39,13 +39,13 @@ function TimelineDot({ isActive }: { isActive: boolean }) {
         style={{ border: "1.5px solid var(--colour-text-primary)" }}
         animate={
           isActive
-            ? { opacity: [0.35, 0.7, 0.35], scale: [1, 1.7, 1] }
-            : { opacity: 0.35, scale: 1 }
+            ? { opacity: [0.3, 0.52, 0.3], scale: [1, 1.28, 1] }
+            : { opacity: 0.3, scale: 1 }
         }
         transition={
           isActive
-            ? { duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }
-            : { duration: 0.6, ease: "easeOut" }
+            ? { duration: 3.2, ease: [0.45, 0, 0.55, 1], repeat: Infinity, repeatType: "loop" }
+            : { duration: 0.7, ease: "easeOut" }
         }
       />
       {/* Inner dot — brightens when active */}
@@ -109,9 +109,10 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
         </span>
       </div>
 
-      {/* dot — centre at pt + 7.5px (half of 15px motion.div) = ~20px, matching
-           the visual centre of the text-xl/leading-snug year label */}
-      <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
+      {/* dot — centre aligns with the cap-height of the text-xl year label.
+           calc(1.2rem - 7.5px): 1.2rem ≈ visual cap-height offset for text-xl/leading-snug
+           in Cormorant Garamond; 7.5px = half the 15px dot. */}
+      <div className="flex-shrink-0 w-10 flex justify-center" style={{ paddingTop: "calc(1.2rem - 7.5px)" }}>
         <TimelineDot isActive={isActive} />
       </div>
 
@@ -180,15 +181,31 @@ export function CareerTimeline({ entries, heading = "Experience" }: { entries: E
         </motion.h2>
 
         <div ref={containerRef} className="relative">
-          {/* track */}
+          {/* track — on mobile: left-5 (1.25rem = centre of the w-10 dot column).
+               on desktop: 148px (year label) + half of w-10 (1.25rem) = 148px + 1.25rem,
+               ensuring the line sits at the exact horizontal centre of the dot. */}
           <div
-            className="absolute top-0 bottom-0 left-5 md:left-[168px] w-px pointer-events-none"
-            style={{ backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
+            className="absolute top-0 bottom-0 w-px pointer-events-none"
+            style={{ left: "1.25rem", backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
+          />
+          <div
+            className="absolute top-0 bottom-0 w-px pointer-events-none hidden md:block"
+            style={{ left: "calc(148px + 1.25rem)", backgroundColor: "var(--colour-text-primary)", opacity: 0.1 }}
           />
           {/* scroll-driven fill */}
           <motion.div
-            className="absolute top-0 bottom-0 left-5 md:left-[168px] w-px origin-top pointer-events-none"
+            className="absolute top-0 bottom-0 w-px origin-top pointer-events-none md:hidden"
             style={{
+              left: "1.25rem",
+              backgroundColor: "var(--colour-text-primary)",
+              opacity: 0.55,
+              scaleY: lineScaleY,
+            }}
+          />
+          <motion.div
+            className="absolute top-0 bottom-0 w-px origin-top pointer-events-none hidden md:block"
+            style={{
+              left: "calc(148px + 1.25rem)",
               backgroundColor: "var(--colour-text-primary)",
               opacity: 0.55,
               scaleY: lineScaleY,
