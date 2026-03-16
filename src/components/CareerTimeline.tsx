@@ -24,14 +24,16 @@ function formatRange(startYear: number, endYear: number | null): string {
 function TimelineDot() {
   return (
     <motion.div
-      className="relative flex items-center justify-center"
+      // Explicit 15×15 size so the IntersectionObserver has a real bounding box
+      // and the outer ring (inset-0) fills it correctly.
+      className="relative flex items-center justify-center w-[15px] h-[15px]"
       initial={{ opacity: 0, scale: 0.4 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45, type: "spring", stiffness: 180, damping: 16 }}
-      viewport={{ amount: 1 }}
+      viewport={{ amount: 0.5 }}
     >
       <div
-        className="absolute w-[15px] h-[15px] rounded-full"
+        className="absolute inset-0 rounded-full"
         style={{ border: "1.5px solid var(--colour-text-primary)", opacity: 0.35 }}
       />
       <div
@@ -86,9 +88,9 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
         </span>
       </div>
 
-      {/* dot — centre at pt + 3.5px (half of 7px inner dot) = ~20px, matching
+      {/* dot — centre at pt + 7.5px (half of 15px motion.div) = ~20px, matching
            the visual centre of the text-xl/leading-snug year label */}
-      <div className="flex-shrink-0 w-10 flex justify-center pt-[16px]">
+      <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
         <TimelineDot />
       </div>
 
