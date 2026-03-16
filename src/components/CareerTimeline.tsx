@@ -31,11 +31,11 @@ function TimelineDot() {
       viewport={{ amount: 1 }}
     >
       <div
-        className="absolute w-[11px] h-[11px] rounded-full"
-        style={{ border: "1px solid var(--colour-text-primary)", opacity: 0.25 }}
+        className="absolute w-[15px] h-[15px] rounded-full"
+        style={{ border: "1.5px solid var(--colour-text-primary)", opacity: 0.35 }}
       />
       <div
-        className="w-[5px] h-[5px] rounded-full"
+        className="w-[7px] h-[7px] rounded-full"
         style={{ backgroundColor: "var(--colour-text-primary)" }}
       />
     </motion.div>
@@ -86,8 +86,9 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
         </span>
       </div>
 
-      {/* dot — offset matches half the h3 cap-height at text-xl/leading-snug ≈ 13px */}
-      <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
+      {/* dot — centre at pt + 3.5px (half of 7px inner dot) = ~20px, matching
+           the visual centre of the text-xl/leading-snug year label */}
+      <div className="flex-shrink-0 w-10 flex justify-center pt-[16px]">
         <TimelineDot />
       </div>
 
