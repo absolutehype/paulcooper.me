@@ -5,6 +5,7 @@ import {
   motion,
   useScroll,
   useSpring,
+  useInView,
 } from "motion/react";
 import type { ExperienceEntry } from "@/lib/experience";
 
@@ -21,7 +22,7 @@ function formatRange(startYear: number, endYear: number | null): string {
 
 // ─── dot ────────────────────────────────────────────────────────────────────
 
-function TimelineDot() {
+function TimelineDot({ isActive }: { isActive: boolean }) {
   return (
     <motion.div
       // Explicit 15×15 size so the IntersectionObserver has a real bounding box
@@ -32,13 +33,27 @@ function TimelineDot() {
       transition={{ duration: 0.45, type: "spring", stiffness: 180, damping: 16 }}
       viewport={{ amount: 0.5 }}
     >
-      <div
+      {/* Outer ring — pulses when the timeline has scrolled past this entry */}
+      <motion.div
         className="absolute inset-0 rounded-full"
-        style={{ border: "1.5px solid var(--colour-text-primary)", opacity: 0.35 }}
+        style={{ border: "1.5px solid var(--colour-text-primary)" }}
+        animate={
+          isActive
+            ? { opacity: [0.35, 0.7, 0.35], scale: [1, 1.7, 1] }
+            : { opacity: 0.35, scale: 1 }
+        }
+        transition={
+          isActive
+            ? { duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }
+            : { duration: 0.6, ease: "easeOut" }
+        }
       />
-      <div
+      {/* Inner dot — brightens when active */}
+      <motion.div
         className="w-[7px] h-[7px] rounded-full"
         style={{ backgroundColor: "var(--colour-text-primary)" }}
+        animate={{ opacity: isActive ? 1 : 0.6 }}
+        transition={{ duration: 0.5 }}
       />
     </motion.div>
   );
@@ -69,8 +84,14 @@ function EntryContent({ html }: { html: string }) {
 function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
   const bottomPad = Math.round(72 + entry.durationFraction * 56);
 
+  // Dot becomes "active" (pulsing) once the entry's top edge has crossed
+  // 45% from the top of the viewport — i.e. the timeline fill has reached it.
+  const ref = useRef<HTMLDivElement>(null);
+  const isActive = useInView(ref, { margin: "0px 0px -55% 0px" });
+
   return (
     <motion.div
+      ref={ref}
       className="flex"
       style={{ paddingBottom: bottomPad }}
       initial={{ opacity: 0, y: 28 }}
@@ -91,7 +112,7 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
       {/* dot — centre at pt + 7.5px (half of 15px motion.div) = ~20px, matching
            the visual centre of the text-xl/leading-snug year label */}
       <div className="flex-shrink-0 w-10 flex justify-center pt-[13px]">
-        <TimelineDot />
+        <TimelineDot isActive={isActive} />
       </div>
 
       {/* content */}
