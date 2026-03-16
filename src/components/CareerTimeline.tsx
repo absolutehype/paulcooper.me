@@ -53,7 +53,7 @@ function TimelineDot() {
 function EntryContent({ html }: { html: string }) {
   return (
     <div
-      className="tl-prose text-base md:text-lg leading-relaxed"
+      className="tl-prose text-md md:text-lg leading-relaxed"
       style={{ color: "var(--colour-text-primary)", opacity: 0.82 }}
       // Content is trusted: parsed from owner-authored markdown via
       // markdownToHtml() which emits only <p>/<ul>/<li> — no user input.
@@ -126,7 +126,7 @@ function TimelineEntry({ entry }: { entry: ExperienceEntry }) {
 
 // ─── main ────────────────────────────────────────────────────────────────────
 
-export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
+export function CareerTimeline({ entries, heading = "Experience" }: { entries: ExperienceEntry[]; heading?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -145,14 +145,14 @@ export function CareerTimeline({ entries }: { entries: ExperienceEntry[] }) {
       <div className="container max-w-[960px] mx-auto px-10 md:px-20 py-16 md:py-24 lg:py-32">
 
         <motion.h2
-          className="text-3xl md:text-4xl mb-16 md:mb-20 text-center"
+          className="text-2xl md:text-4xl mb-16 md:mb-20 text-center"
           style={{ fontStyle: "italic", color: "var(--colour-text-primary)" }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ amount: 0.5 }}
         >
-          Experience
+          {heading}
         </motion.h2>
 
         <div ref={containerRef} className="relative">

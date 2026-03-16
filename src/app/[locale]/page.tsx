@@ -3,13 +3,15 @@ import * as motion from "motion/react-client";
 import avatarImage from "../../../public/images/avatar.jpeg";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { CareerTimeline } from "@/components/CareerTimeline";
 import { getExperience } from "@/lib/experience";
 import { LogoCarousel } from "@/components/LogoCarousel";
 
-export default function Home() {
+export default async function Home() {
   const t = useTranslations();
-  const experience = getExperience();
+  const locale = await getLocale();
+  const experience = getExperience(locale);
 
   return (
     <main className="flex flex-col text-md md:text-lg items-center">
@@ -108,7 +110,7 @@ export default function Home() {
         <p>{t("HOME.BODY")}</p>
         <LogoCarousel />
       </motion.section>
-      <CareerTimeline entries={experience} />
+      <CareerTimeline entries={experience} heading={t("EXPERIENCE.HEADING")} />
 
       <motion.footer
         initial={{ opacity: 0 }}
