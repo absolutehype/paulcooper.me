@@ -2,15 +2,13 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import avatarImage from "../../../public/images/avatar.jpeg";
 import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
-import { getLocale } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { CareerTimeline } from "@/components/CareerTimeline";
 import { getExperience } from "@/lib/experience";
 import { LogoCarousel } from "@/components/LogoCarousel";
 
 export default async function Home() {
-  const t = useTranslations();
-  const locale = await getLocale();
+  const [t, locale] = await Promise.all([getTranslations(), getLocale()]);
   const experience = getExperience(locale);
 
   return (
