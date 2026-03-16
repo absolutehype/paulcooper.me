@@ -6,4 +6,4 @@ endYear: 2008
 order: 6
 ---
 
-An agency environment that required me to work closely with clients on the design and development of their marketing websites and promotional materials including email campaigns. I also led the development of all PHP-based projects including Magento e-commerce sites.
+Where it all started. Client sites, email campaigns, Magento shops — and the dawning realisation that I enjoyed building things on the web.
