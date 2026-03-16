@@ -1,11 +1,11 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import avatarImage from "../../../public/images/avatar.jpeg";
-import { Link } from "@/i18n/routing";
 import { getTranslations, getLocale } from "next-intl/server";
 import { CareerTimeline } from "@/components/CareerTimeline";
 import { getExperience } from "@/lib/experience";
 import { LogoCarousel } from "@/components/LogoCarousel";
+import { LocaleLink } from "@/components/LocaleSwitcher";
 
 export default async function Home() {
   const [t, locale] = await Promise.all([getTranslations(), getLocale()]);
@@ -119,19 +119,13 @@ export default async function Home() {
       >
         <ul className="flex items-center justify-center gap-10">
           <li>
-            <Link href="/" locale="en" scroll={false}>
-              English
-            </Link>
+            <LocaleLink locale="en">English</LocaleLink>
           </li>
           <li>
-            <Link href="/" locale="fr" scroll={false}>
-              Français
-            </Link>
+            <LocaleLink locale="fr">Français</LocaleLink>
           </li>
           <li>
-            <Link href="/" locale="es" scroll={false}>
-              Español
-            </Link>
+            <LocaleLink locale="es">Español</LocaleLink>
           </li>
         </ul>
       </motion.footer>
