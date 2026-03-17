@@ -6,4 +6,4 @@ endYear: null
 order: 1
 ---
 
-Dos niñas gemelas llegaron en febrero. A partes iguales caos y magia, actualmente mi rol más exigente y gratificante. Tomándome un tiempo bien merecido para estar presente antes de pensar en los próximos pasos.
+Dos niñas gemelas llegaron en febrero. A partes iguales aterradoras y mágicas, actualmente mi rol más exigente y gratificante. Tomándome un tiempo bien merecido para disfrutar el momento antes de pensar en los próximos pasos.

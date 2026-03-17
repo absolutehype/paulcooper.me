@@ -71,7 +71,7 @@ export default async function Home() {
               })}
             </p>
             <nav className="flex gap-6 mt-6">
-              <a
+              {/* <a
                 href="https://www.instagram.com/absolutehype/"
                 title="Instagram"
               >
@@ -81,7 +81,7 @@ export default async function Home() {
                   width={25}
                   height={25}
                 />
-              </a>
+              </a> */}
               <a
                 href="https://www.linkedin.com/in/absolutehype/"
                 title="LinkedIn"

@@ -6,4 +6,4 @@ endYear: 2008
 order: 6
 ---
 
-Tout a commencé ici. Une agence dynamique entre sites clients, campagnes e-mail et boutiques Magento, avec la révélation que j'aimais vraiment construire des choses pour le web.
+Tout a commencé ici. Une agence locale dynamique entre sites clients, campagnes e-mail et boutiques Magento, avec la révélation que j'aimais vraiment construire des choses pour le web.
