@@ -6,4 +6,4 @@ endYear: 2017
 order: 4
 ---
 
-Start-up de salud digital en fase temprana donde ayudé a construir el producto desde cero. Plataforma white-label para el Ministerio de Salud de Singapur, Aviva y Allianz.
+Start-up de salud digital en fase temprana donde ayudé a dar forma al producto en sus inicios. Plataforma white-label para el Ministerio de Salud de Singapur, Aviva y Allianz.

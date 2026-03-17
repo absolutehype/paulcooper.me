@@ -6,4 +6,4 @@ endYear: 2026
 order: 2
 ---
 
-Scratched a long-standing design itch at a small, creative agency. Owned the brand, built Figma design systems, created After Effects tooling for DOOH, and kept the Angular products ticking along.
+I joined HMM to scratch a long-standing design itch alongside the opportunity to join former colleagues in a small, innovative team. Whilst I was involved in front-end development, my role leaned more heavily into product design, branding and marketing. I managed the brand, built design systems, created After Effects tooling for DOOH, and helped maintain the Angular product front-end.
