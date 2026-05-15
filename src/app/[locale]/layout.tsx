@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/app/globals.css";
 import { ReactNode } from "react";
 import { PageLoader } from "@/components/PageLoader";
+import { routing } from "@/i18n/routing";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -16,11 +17,85 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Paul Cooper - Front End Developer",
-  description:
-    "The personal website of Paul Cooper, a London based Front End Developer working at Human Made Machine",
-};
+const SITE_URL = "https://paulcooper.me";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isDefault = locale === routing.defaultLocale;
+  const canonical = isDefault ? SITE_URL : `${SITE_URL}/${locale}`;
+
+  const languages: Record<string, string> = { "x-default": SITE_URL };
+  for (const l of routing.locales) {
+    languages[l] = l === routing.defaultLocale ? SITE_URL : `${SITE_URL}/${l}`;
+  }
+
+  const title = "Paul Cooper — Design Engineer in London";
+  const description =
+    "Paul Cooper is a London-based Design Engineer at Human Made Machine. Over a decade of experience designing and building front-end products for industry-leading brands.";
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    applicationName: "Paul Cooper",
+    authors: [{ name: "Paul Cooper", url: SITE_URL }],
+    creator: "Paul Cooper",
+    publisher: "Paul Cooper",
+    keywords: [
+      "Paul Cooper",
+      "Paul Cooper London",
+      "Paul Cooper Design Engineer",
+      "Paul Cooper Human Made Machine",
+      "absolutehype",
+      "Design Engineer",
+      "Front End Developer",
+      "London",
+    ],
+    alternates: {
+      canonical,
+      languages,
+    },
+    openGraph: {
+      type: "profile",
+      url: canonical,
+      siteName: "Paul Cooper",
+      title,
+      description,
+      locale,
+      firstName: "Paul",
+      lastName: "Cooper",
+      username: "absolutehype",
+      images: [
+        {
+          url: "/images/header.jpeg",
+          width: 1200,
+          height: 630,
+          alt: "Paul Cooper — Design Engineer in London",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/images/header.jpeg"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -42,6 +117,31 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const { locale } = await params;
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Paul Cooper",
+    alternateName: "absolutehype",
+    url: SITE_URL,
+    image: `${SITE_URL}/images/avatar.jpeg`,
+    jobTitle: "Design Engineer",
+    worksFor: {
+      "@type": "Organization",
+      name: "Human Made Machine",
+      url: "https://www.humanmademachine.com/",
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "London",
+      addressCountry: "GB",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/absolutehype/",
+      "https://www.instagram.com/absolutehype/",
+      "https://github.com/absolutehype",
+    ],
+  };
+
   return (
     <html lang={locale}>
       <body className={cormorant.className}>
@@ -49,6 +149,10 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Analytics />
         <SpeedInsights />
       </body>

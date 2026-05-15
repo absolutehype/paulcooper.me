@@ -36,7 +36,7 @@ export default async function Home() {
           >
             <Image
               src={avatarImage}
-              alt="Paul Cooper Avatar"
+              alt="Portrait of Paul Cooper, Design Engineer at Human Made Machine"
               className="rounded-full max-w-[20vw] md:max-w-[16vw] lg:max-w-[12vw] 2xl:max-w-[10vw] transition"
               sizes="(max-width: 768px) 64px,
               (max-width: 1200px) 16vw,
